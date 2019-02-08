@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="30dp"
+        android:layout_margin="5dp"
+        android:layout_centerInParent="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp">
+        <RelativeLayout
+            android:id="@+id/layoutTapPhim"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:gravity="center"
+                android:padding="10dp"
+                android:id="@+id/txtTapPhimSo"
+                android:textColor="#0097a7"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:text="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</RelativeLayout>

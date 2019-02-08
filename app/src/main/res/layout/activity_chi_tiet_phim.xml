@@ -1,0 +1,298 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.nguyensang.anime_online_official.Activity.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/myAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:theme="@style/Theme.AppCompat"
+        app:elevation="0dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            app:titleTextAppearance="@style/AppTheme.Toolbar.Title"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+            android:id="@+id/collapsingToolbarChiTiet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgHinhNenChiTiet"
+                android:scaleType="fitCenter"
+                android:layout_width="match_parent"
+                android:layout_height="250dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <android.support.design.widget.FloatingActionButton
+                    app:backgroundTint="@color/customBGHeart"
+                    android:id="@+id/btnFloat"
+                    android:layout_width="70dp"
+                    android:layout_height="64dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/grayfavorite" />
+            </RelativeLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:layout_marginTop="10dp"
+                android:id="@+id/toolbarShowChitiet"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/Theme.AppCompat.Light"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/myNestChiTiet"
+        android:background="@drawable/bgmain"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+
+                android:id="@+id/layoutContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                >
+
+                <android.support.v7.widget.CardView
+                    app:cardBackgroundColor="#00ffffff"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="145dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="5dp">
+                    <ImageView
+                        android:scaleType="centerCrop"
+                        android:id="@+id/imgHinhChiTiet"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        />
+                </android.support.v7.widget.CardView>
+
+
+                <LinearLayout
+                    android:paddingLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="7">
+
+                    <TextView
+                        android:id="@+id/txtTenPhimChiTiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="2"
+                        android:paddingLeft="5dp"
+                        android:text=""
+                        android:textColor="#f16800"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:maxLines="1"
+                        android:textColor="#fff"
+                        android:id="@+id/txtNamPhatHanh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="5dp"
+                        android:text=""
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:textColor="#fff"
+                        android:id="@+id/txtTheLoaiChiTiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:maxLines="2"
+                        android:paddingLeft="5dp"
+                        android:text=""
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:maxLines="1"
+                        android:textColor="#fff"
+                        android:id="@+id/txtThoiLuongChiTiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="5dp"
+                        android:text=""
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:maxLines="1"
+                        android:textColor="#fff"
+                        android:id="@+id/txtTapMoiChiTiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="5dp"
+                        android:text=""
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <WebView
+                android:visibility="gone"
+                android:id="@+id/webViewTapPhimChiTiet"
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <TextView
+                android:layout_below="@+id/layoutContent"
+                android:textColor="#fff"
+                android:id="@+id/txtNoiDungChiTiet"
+                android:text=""
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_margin="5dp"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:id="@+id/txtTitleTapMoi"
+                android:layout_below="@id/txtNoiDungChiTiet"
+                android:text="Xem tập mới nhất"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.CardView
+                app:cardBackgroundColor="#4f000000"
+                app:cardCornerRadius="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/cardVvideo"
+                android:layout_below="@+id/txtTitleTapMoi"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/txtError"
+                        android:textStyle="bold"
+                        android:textSize="10sp"
+                        android:textColor="#deffffff"
+                        android:text="Đang tải tập phim ..."
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textSize="10sp"
+                        android:textColor="#deffffff"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/txtError"
+                        android:text="Nếu chờ lâu bạn hãy chọn tập khác"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <tcking.github.com.giraffeplayer2.VideoView
+                        android:visibility="gone"
+                        android:id="@+id/video_viewChiTiet"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <com.wang.avi.AVLoadingIndicatorView
+                        android:visibility="gone"
+                        android:id="@+id/progressIndicator"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:indicatorName="BallBeatIndicator"
+                        />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/txtTitleSoTap"
+                android:layout_below="@+id/cardVvideo"
+                android:textColor="#ffffff"
+                android:text="Danh sách tập phim "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_below="@+id/txtTitleSoTap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
+                    app:cardBackgroundColor="#7d565656"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="98dp">
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <android.support.v7.widget.RecyclerView
+                            android:background="#8b002242"
+                            android:padding="5dp"
+                            android:id="@+id/myRecyclerShowTapPhim"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp">
+                        </android.support.v7.widget.RecyclerView>
+                        <TextView
+                            android:textColor="#ffffff"
+                            android:layout_below="@id/myRecyclerShowTapPhim"
+                            android:layout_centerHorizontal="true"
+                            android:text="- vuốt -"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                </android.support.v7.widget.CardView>
+                <TextView
+                    android:visibility="gone"
+                    android:textColor="#fff"
+                    android:layout_centerInParent="true"
+                    android:text="Chưa cập nhật tập phim ! Quay lại sau"
+                    android:id="@+id/txtTitleProcessLoad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

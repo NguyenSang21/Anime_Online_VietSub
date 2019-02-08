@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="4dp"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/imgRecent"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/txtTenPhimRecent"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imgRecent"
+            android:maxLines="2"
+            android:text="Như lai thần chuong chap 120 privious"
+            android:textColor="#000"
+            android:textSize="13sp"
+            android:layout_toRightOf="@+id/imgRecent" />
+        <TextView
+            android:textSize="12sp"
+            android:layout_centerVertical="true"
+            android:id="@+id/txtNgayRecent"
+            android:layout_alignParentRight="true"
+            android:text="20/20/1999"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

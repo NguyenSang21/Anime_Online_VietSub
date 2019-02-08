@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bgsearch"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtTimKiem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="Tìm kiếm "
+            android:textColor="#ffffff"
+            android:textSize="50sp"
+             />
+        <EditText
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/backgoundtimkiem"
+            android:id="@+id/edtTimKim"
+            android:layout_below="@+id/txtTimKiem"
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:textAllCaps="false"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:text="DUYỆT TÌM"
+            android:id="@+id/btnTimKiem"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/edtTimKim"
+            android:background="@drawable/backgoundtimkiem"
+            android:layout_width="140dp"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/txtAlertTimKiem"
+            android:textColor="#fff"
+            android:visibility="gone"
+            android:layout_marginTop="50dp"
+            android:text="Rất tiếc! Không tìm thấy phim bạn cần tìm."
+            android:layout_below="@+id/btnTimKiem"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_margin="10dp"
+            android:layout_below="@+id/btnTimKiem"
+            android:id="@+id/myRecyclerSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

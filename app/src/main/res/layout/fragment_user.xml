@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_scrollFlags="scroll|enterAlways|snap"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#fff"
+            android:id="@+id/txtTitleUser"
+            android:textSize="40sp"
+            android:gravity="center"
+            android:text="Cá nhân"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/txtTitleUser"
+            android:id="@+id/userImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            />
+        <TextView
+            android:layout_below="@+id/userImage"
+            android:id="@+id/userName"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="Nguyễn Sang"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
+        <TextView
+            android:gravity="center"
+            android:layout_below="@+id/userName"
+            android:id="@+id/userEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:padding="5dp"
+            android:text="nguyentansang1996@gmail.com"
+            android:textColor="#fff"
+            android:textStyle="bold"/>
+        <ImageButton
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/userEmail"
+            android:id="@+id/btnOut"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/exit"/>
+
+        <TextView
+            android:textColor="#fff"
+            android:id="@+id/txtTitleYeuThich"
+            android:layout_marginTop="15dp"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_below="@+id/btnOut"
+            android:text="Yêu thích của bạn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:id="@+id/layoutRelaYeuThich"
+            android:layout_below="@+id/txtTitleYeuThich"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecyclerViewFavourite"
+                android:orientation="horizontal"
+                android:background="#00ffffff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/txtEmptyFavourite"
+                android:visibility="visible"
+                android:text="Hãy thêm vào truyện yêu thích"
+                android:textColor="#fff"
+                android:textSize="13dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:textColor="#fff"
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_below="@id/layoutRelaYeuThich"
+            android:id="@+id/txtTitleGanDay"
+            android:text="Gần đây"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_below="@+id/txtTitleGanDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRecyclerViewRecent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/txtEmptyRecent"
+                android:visibility="gone"
+                android:text="Bạn vẫn chưa xem truyện nào"
+                android:textColor="#fff"
+                android:textSize="13dp"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

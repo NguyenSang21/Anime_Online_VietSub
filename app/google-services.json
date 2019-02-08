@@ -1,0 +1,72 @@
+{
+  "project_info": {
+    "project_number": "464187713220",
+    "firebase_url": "https://animeonlineofficial.firebaseio.com",
+    "project_id": "animeonlineofficial",
+    "storage_bucket": "animeonlineofficial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464187713220:android:1863de89f1eb48ab",
+        "android_client_info": {
+          "package_name": "com.example.nguyensang.anime_online_official"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464187713220-tb0snn3ee539kf4g8hbls88lcqosi4a0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguyensang.anime_online_official",
+            "certificate_hash": "6d7abdb5f32eb664b52d5e18a9350922f928621f"
+          }
+        },
+        {
+          "client_id": "464187713220-maho8g7qt8m632lla1fsq690uj6m337q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguyensang.anime_online_official",
+            "certificate_hash": "5a3694a1aab0225c7dd699384c3be2e2f5cbdccf"
+          }
+        },
+        {
+          "client_id": "464187713220-ecnn93gf6dflh9jt700d4mq6fqhe3i3c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguyensang.anime_online_official",
+            "certificate_hash": "c41ce94dfcd801e1957724fe27f28e8024dfbe69"
+          }
+        },
+        {
+          "client_id": "464187713220-lec05v2b230gtdflrgfvpto1m5r48c1b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiCzCiJ8ZdoBhI8hVp7hKRAi0efQ9MeYA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464187713220-hh421cr5ab6egbacsaeb3bhos4sjfaho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      },
+      "admob_app_id": "ca-app-pub-2442262795945566~1692515612"
+    }
+  ],
+  "configuration_version": "1"
+}

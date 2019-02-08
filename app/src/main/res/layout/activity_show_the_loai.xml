@@ -1,0 +1,57 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.nguyensang.anime_online_official.Activity.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/myAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="beforeDescendants"
+        android:theme="@style/Theme.AppCompat"
+        android:focusableInTouchMode="true"
+        app:elevation="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_marginTop="20dp"
+            android:id="@+id/toolbarShowTheLoai"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/Theme.AppCompat.Light"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:background="@drawable/backgoundtheloai"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            app:layoutManager="LinearLayoutManager"
+            android:layout_marginTop="5dp"
+            android:id="@+id/myRecyclerViewShowTheLoai"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+        <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+            android:id="@+id/progress_circle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:mlpb_show_arrow="true"
+            app:mlpb_arrow_height="5dp"
+            android:visibility="gone"
+            app:mlpb_arrow_width="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="60dp" />
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>
