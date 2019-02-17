@@ -338,6 +338,7 @@ public class ChiTietPhimActivity extends AppCompatActivity implements LinkTapPhi
                             links.add(link);
                         }
                     }
+
                     //
                     if (links.size() > 0){
                         //int tapCuoiCung = links.size()-1;
