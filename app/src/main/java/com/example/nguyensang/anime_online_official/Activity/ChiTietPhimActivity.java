@@ -214,9 +214,7 @@ public class ChiTietPhimActivity extends AppCompatActivity implements LinkTapPhi
             public void onResponse(String response) {
                 try{
                     Document doc= Jsoup.parse(response);
-
                     linkPhim = doc.getElementsByClass("ah-pif-ftool ah-bg-bd ah-clear-both").get(0).getElementsByTag("a").get(0).attr("href");
-
                     getTapPhim(linkPhim);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -225,7 +223,7 @@ public class ChiTietPhimActivity extends AppCompatActivity implements LinkTapPhi
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(ChiTietPhimActivity.this, "Lôi", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChiTietPhimActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
             }
         });
         resq.add(stringreq);
@@ -260,7 +258,6 @@ public class ChiTietPhimActivity extends AppCompatActivity implements LinkTapPhi
                     db.Insert(tenPhim, url, date, hinhAnh);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Toast.makeText(ChiTietPhimActivity.this, "OKOK", Toast.LENGTH_SHORT).show();
                     setThongTinPhim(hinhAnh, imgNen, noiDung, nam, thoiLuong, tenPhim, theLoai, tapMoi);
                 }
             }
@@ -343,18 +340,14 @@ public class ChiTietPhimActivity extends AppCompatActivity implements LinkTapPhi
                     }
                     //
                     if (links.size() > 0){
-                        int tapCuoiCung = links.size()-1;
-                        String linkPlayTapCuoi = links.get(tapCuoiCung);
-                        initWebview(linkPlayTapCuoi);
-                        tapPhimAdapter = new TapPhimAdapter(ChiTietPhimActivity.this, links, tapCuoiCung);
+                        //int tapCuoiCung = links.size()-1;
+                        String linkPlayTapDau = links.get(0);
+                        initWebview(linkPlayTapDau);
+                        tapPhimAdapter = new TapPhimAdapter(ChiTietPhimActivity.this, links, 0);
                         layoutManagerTapPhim = new LinearLayoutManager(ChiTietPhimActivity.this,LinearLayoutManager.HORIZONTAL,false);
                         layoutManagerTapPhim.setAutoMeasureEnabled(true);
-                        int spanCount = 5; // 3 columns
-                        int spacing = 20; // 50px
-                        boolean includeEdge = false;
-                        //recyclerViewTapPhim.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
                         recyclerViewTapPhim.setLayoutManager(layoutManagerTapPhim);
-                        recyclerViewTapPhim.scrollToPosition(tapCuoiCung);
+                        recyclerViewTapPhim.scrollToPosition(0);
                         recyclerViewTapPhim.setHasFixedSize(true);
                         recyclerViewTapPhim.setNestedScrollingEnabled(true);
                         recyclerViewTapPhim.setAdapter(tapPhimAdapter);
@@ -397,7 +390,6 @@ public class ChiTietPhimActivity extends AppCompatActivity implements LinkTapPhi
 
     @Override
     public void linkTapPhim(String link) {
-        //showDialog();
         avi.show();
         initWebview(link);
     }
@@ -444,10 +436,6 @@ public class ChiTietPhimActivity extends AppCompatActivity implements LinkTapPhi
                     videoView.getVideoInfo().setUri(Uri.parse(url));
                     videoView.getPlayer().start();
                 }
-//                if(pDialog != null && pDialog.isShowing()) {
-//                    pDialog.hide();
-//                }
-
             }
         });
 
@@ -507,7 +495,6 @@ public class ChiTietPhimActivity extends AppCompatActivity implements LinkTapPhi
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
         pDialog.setTitleText("Đang tải chờ xí nhé !!");
-        //pDialog.setCustomImage(R.drawable.background_box_tapphim);
         pDialog.setCancelable(false);
         pDialog.show();
     }

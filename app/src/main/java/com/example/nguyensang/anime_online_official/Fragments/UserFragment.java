@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.azoft.carousellayoutmanager.CenterScrollListener;
 import com.example.nguyensang.anime_online_official.Customclass.GridSpacingItemDecoration;
+import com.example.nguyensang.anime_online_official.Customclass.PaddingItemDecorationHorizontal;
 import com.example.nguyensang.anime_online_official.Customclass.Phim;
 import com.example.nguyensang.anime_online_official.Adapters.PhimAdapter;
 import com.example.nguyensang.anime_online_official.R;
@@ -59,7 +61,7 @@ public class UserFragment extends Fragment {
     private View view;
     private CircleImageView imgUser;
     private TextView txtUserName, txtUserEmail, txtEmptyRecent, txtEmptyFavourite;
-    private ImageButton btnLogOut, btnDropRecent, btnDisAction;
+    private ImageButton btnLogOut;
     private DatabaseReference mData;
     private RecyclerView mRecyclerViewFavourite, mRecyclerViewRecent;
     private ArrayList<Phim> arrayListFavourite, arrayListRecent;
@@ -76,10 +78,8 @@ public class UserFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         mData= FirebaseDatabase.getInstance().getReference();
-        //////////data
-
-        db= new SQLite(getActivity(),"DataRecent.sqlite",null,1);
-        db.QueryData("CREATE TABLE IF NOT EXISTS DuLieu(Id INTEGER PRIMARY KEY AUTOINCREMENT, TenPhim VARCHAR ,LinkPhim VARCHAR , NgayGio VARCHAR, LinkAnh VARCHAR)");
+        //////////data local
+        setDataLocal();
         //////////
         getUserDetails();
         setPhimFavourite();
@@ -110,12 +110,27 @@ public class UserFragment extends Fragment {
         }
     }
 
+    private void setDataLocal(){
+        if(db == null)
+        {
+            db = new SQLite(getActivity(),"DataRecent.sqlite",null,1);
+            db.QueryData("CREATE TABLE IF NOT EXISTS DuLieu(Id INTEGER PRIMARY KEY AUTOINCREMENT, TenPhim VARCHAR ,LinkPhim VARCHAR , NgayGio VARCHAR, LinkAnh VARCHAR)");
+        }
+    }
+
     private void setTruyenRecent() {
         /////// kết nối data
         mLayoutRecent = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         mRecyclerViewRecent.setLayoutManager(mLayoutRecent);
         mRecyclerViewRecent.setHasFixedSize(true);
         mRecyclerViewRecent.setNestedScrollingEnabled(false);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerViewRecent.getContext(),
+                mLayoutRecent.getOrientation());
+        mRecyclerViewRecent.addItemDecoration(dividerItemDecoration);
+//        int spanCount = 1000; // 3 columns
+//        int spacing = 10; // 50px
+//        boolean includeEdge = false;
+//        mRecyclerViewRecent.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
         arrayListRecent = new ArrayList<>();
         recentPhimAdapter = new RecentPhimAdapter(getActivity(),arrayListRecent);
         mRecyclerViewRecent.setAdapter(recentPhimAdapter);
@@ -130,7 +145,7 @@ public class UserFragment extends Fragment {
                 arrayListRecent.add(phim);
                 if (arrayListRecent.size() == 15){
                     break;
-                }else if (arrayListRecent.size() == 500){
+                }else if (arrayListRecent.size() == 1000){
                     getContext().deleteDatabase("DataRecent.sqlite");
                 }
                 recentPhimAdapter.notifyDataSetChanged();
@@ -144,29 +159,24 @@ public class UserFragment extends Fragment {
     private void setPhimFavourite() {
         mLayoutFavourite = new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         mRecyclerViewFavourite.setLayoutManager(mLayoutFavourite);
-        mRecyclerViewFavourite.addOnScrollListener(new CenterScrollListener());
-        mRecyclerViewFavourite.setHasFixedSize(true);
-//        int spanCount = 3; // 3 columns
-//        int spacing = 10; // 50px
-//        boolean includeEdge = false;
-//        mRecyclerViewFavourite.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
+        //mRecyclerViewFavourite.addOnScrollListener(new CenterScrollListener());
+        //mRecyclerViewFavourite.setHasFixedSize(true);
+        int spanCount = 1000; // 3 columns
+        int spacing = 10; // 50px
+        boolean includeEdge = false;
+        mRecyclerViewFavourite.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, includeEdge));
         arrayListFavourite = new ArrayList<>();
         adapterFavourite= new PhimAdapter(getContext(), arrayListFavourite);
         mRecyclerViewFavourite.setAdapter(adapterFavourite);
-        mRecyclerViewFavourite.setNestedScrollingEnabled(false);
         if (user != null){
             String id= user.getUid();
-
-            Toast.makeText(getActivity(), "Có Tk", Toast.LENGTH_SHORT).show();
-
+            //Toast.makeText(getActivity(), "Có Tk", Toast.LENGTH_SHORT).show();
             mData.child(id).addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     String link = dataSnapshot.getValue().toString().trim();
-                    //Toast.makeText(getActivity(), link, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), link, Toast.LENGTH_SHORT).show();
                     getDataUser(link);
-
-
                 }
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -226,27 +236,27 @@ public class UserFragment extends Fragment {
 
     private void ShowDialog(){
         SweetAlertDialog pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.WARNING_TYPE);
-        pDialog.setTitleText("Chờ tí ?")
-                .setContentText("Bạn có muốn thoát !")
-                .setCancelText("Thoát")
-                .setConfirmText("Quay Lại")
+        pDialog.setTitleText("Chờ tí !")
+                .setContentText("Bạn có muốn thoát ?")
+                .setCancelText("Cancel")
+                .setConfirmText("Ok")
                 .showCancelButton(true)
-                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
-                    public void onClick(SweetAlertDialog sDialog) {
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
                         mAuth.signOut();
                         FragmentTransaction trans = getFragmentManager().beginTransaction();
                         trans.replace(R.id.root_frame, new RootFragment());
                         trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                         trans.addToBackStack(null);
                         trans.commitAllowingStateLoss();
-                        sDialog.cancel();
+                        sweetAlertDialog.cancel();
                     }
                 })
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
-                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        sweetAlertDialog.cancel();
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
                     }
                 })
                 .setCancelable(false);

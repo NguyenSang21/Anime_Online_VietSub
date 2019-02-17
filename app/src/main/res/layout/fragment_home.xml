@@ -34,7 +34,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="2dp"
             android:layout_marginRight="2dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="29dp"
             android:clipToPadding="false"
             android:orientation="vertical">
 
@@ -147,7 +147,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="30dp"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+                ads:adUnitId="ca-app-pub-2442262795945566/1056973135"></com.google.android.gms.ads.AdView>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

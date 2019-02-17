@@ -39,6 +39,14 @@
           }
         },
         {
+          "client_id": "464187713220-ofog4hb7gid4i05bvvvd349cuki0odl9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nguyensang.anime_online_official",
+            "certificate_hash": "805d7d80c9c5ba42e43cadf63400db125fb627a1"
+          }
+        },
+        {
           "client_id": "464187713220-lec05v2b230gtdflrgfvpto1m5r48c1b.apps.googleusercontent.com",
           "client_type": 3
         }
